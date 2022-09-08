@@ -3,7 +3,7 @@ Proyecto Electiva de Profundización I - Creación de APIs
 # Integrantes: 
 - Germán Torres [@ghermusicgh](https://github.com/ghermusicgh)
 - Aldair Lara [@ajlara09](https://github.com/ajlara09)
-- Duvan Castro [@duvancastro](https://github.com/duvancastro))
+- Duvan Castro [@duvancastro](https://github.com/duvancastro)
 
 # Sprint  1:
 ## Historia de Usuario EP-001 
