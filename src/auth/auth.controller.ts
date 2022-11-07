@@ -13,7 +13,7 @@ export class AuthController {
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  @ApiOperation({summary: 'Used to Login to the Api'})
+  @ApiOperation({summary: 'Creacion de nuevos usuarios, deben ser correos unicos'})
   login(@Req() req: Request) {
     const user = req.user as User;
     return this.authService.generateJWT(user);    

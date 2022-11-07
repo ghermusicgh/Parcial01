@@ -30,7 +30,7 @@ let AuthController = class AuthController {
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('local')),
     (0, common_1.Post)('login'),
-    (0, swagger_1.ApiOperation)({ summary: 'Used to Login to the Api' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Creacion de nuevos usuarios, deben ser correos unicos' }),
     openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
