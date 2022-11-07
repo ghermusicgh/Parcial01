@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -10,7 +10,11 @@ import { MD5 } from 'crypto-js';
 export class UsersService {
   constructor(@InjectRepository(User) private userRepo: Repository<User>) {}
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
+    const userExists = await this.findOneByEmail(createUserDto.email);
+    if  (userExists) {
+      throw new BadRequestException(`Email already exits`);
+    }
     const newUser = Object.assign({}, createUserDto);
     newUser.password = MD5(newUser.password).toString();
     return this.userRepo.save(newUser);
@@ -22,11 +26,16 @@ export class UsersService {
 
   async findOne(id: number) {
     const user = await this.userRepo.findOneBy({ id });
-    if (!user) {
-      throw new NotFoundException(`User ${id} not found`);
-    }
+  
     return user;
   }
+
+  async findOneByEmail(email:string){
+    return this.userRepo.findOneBy({email});
+   
+    
+  }
+
 
   async update(id: number, updateUserDto: UpdateUserDto) {
     const user = await this.userRepo.findOneBy({ id });

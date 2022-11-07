@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import config from './config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
  
 @Module ({
   imports: [
@@ -17,6 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     DatabaseModule,
     //odule.forRootAsync(typeO),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
